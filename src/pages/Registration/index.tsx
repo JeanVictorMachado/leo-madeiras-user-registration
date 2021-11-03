@@ -98,12 +98,14 @@ const Registration = () => {
     const usersInfos = localStorage.getItem('@userInfos:');
     const users = JSON.parse(String(usersInfos)) as InputsProps[];
     const user = users?.find((user) => user.cpf === routeParam?.id);
-    reset();
 
-    setName(user?.name);
-    setCpf(user?.cpf);
-    setPhone(user?.phone);
-    setEmail(user?.email);
+    if (routeParam?.id) {
+      reset();
+      setName(user?.name);
+      setCpf(user?.cpf);
+      setPhone(user?.phone);
+      setEmail(user?.email);
+    }
   }, []);
 
   return (

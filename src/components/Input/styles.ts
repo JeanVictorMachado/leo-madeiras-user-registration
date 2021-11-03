@@ -2,10 +2,11 @@ import styled, { css } from 'styled-components';
 
 interface WrapperProps {
   error?: string | boolean | null;
+  disabled?: boolean;
 }
 
 export const Wrapper = styled.label<WrapperProps>`
-  ${({ theme, error }) => css`
+  ${({ theme, error, disabled }) => css`
     display: flex;
     flex-direction: column;
     color: ${theme.colors.text};
@@ -24,6 +25,7 @@ export const Wrapper = styled.label<WrapperProps>`
       border: 1px solid ${!error ? theme.colors.secondary : 'red'};
       border-radius: 4px;
       background-color: ${theme.colors.background};
+      opacity: ${disabled && '0.5'};
     }
 
     p {

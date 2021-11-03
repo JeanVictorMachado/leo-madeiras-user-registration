@@ -23,7 +23,7 @@ export const Content = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  padding: 32px;
+  padding: 16px;
   border-bottom: 1px solid lightgray;
   margin-bottom: 16px;
   display: flex;

@@ -21,13 +21,19 @@ const Input = ({
   error,
   mask,
   isMask = false,
+  disabled,
   ...props
 }: InputProps) => {
   return (
-    <S.Wrapper error={error}>
+    <S.Wrapper error={error} disabled={disabled}>
       <span>{label}</span>
       {isMask ? (
-        <InputMask mask={mask} {...register(fieldName)} {...props} />
+        <InputMask
+          mask={mask}
+          disabled={disabled}
+          {...register(fieldName)}
+          {...props}
+        />
       ) : (
         <input {...register(fieldName)} {...props} />
       )}
