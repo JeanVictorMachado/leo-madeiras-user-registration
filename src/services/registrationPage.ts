@@ -10,7 +10,13 @@ interface SaveLocalStorageProps {
   setSudmitFormSuccess: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const saveLocalStorage = ({
+interface EditLocalStorageProps {
+  data: UnpackNestedValue<InputsProps>;
+  history: History;
+  setEditUserSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const saveUsers = ({
   data,
   reset,
   history,
@@ -57,4 +63,30 @@ export const saveLocalStorage = ({
 
     return;
   }
+};
+
+export const editUser = ({
+  data,
+  history,
+  setEditUserSuccess
+}: EditLocalStorageProps) => {
+  const usersInfos = localStorage.getItem('@userInfos:');
+  const users = JSON.parse(String(usersInfos)) as InputsProps[];
+  const userExist = users?.filter(
+    (user) => user.cpf !== data.cpf.replace(/[^\d]+/g, '')
+  );
+
+  data.cpf = data.cpf.replace(/[^\d]+/g, '');
+  data.phone = data.phone.replace(/[^\d]+/g, '');
+
+  localStorage.setItem('@userInfos:', JSON.stringify([...userExist, data]));
+
+  setEditUserSuccess(true);
+
+  setTimeout(() => {
+    setEditUserSuccess(false);
+    history.push('/list-users');
+  }, 1500);
+
+  return;
 };

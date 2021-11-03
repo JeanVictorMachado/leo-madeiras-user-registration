@@ -36,7 +36,7 @@ export const ContentRight = styled.div`
 export const UserEditContainer = styled.div`
   ${({ theme }) => css`
     > svg {
-      width: 35px;
+      width: 30px;
 
       &:hover {
         transition: 0.3s;
@@ -53,7 +53,7 @@ export const UserEditContainer = styled.div`
 export const UserDeleteContainer = styled.div`
   ${() => css`
     > svg {
-      width: 35px;
+      width: 30px;
 
       &:hover {
         transition: 0.3s;

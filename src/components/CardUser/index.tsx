@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { UserEdit as UserEditIcon } from '@styled-icons/fa-solid/UserEdit';
 import { UserTimes as UserTimesIcon } from '@styled-icons/fa-solid/UserTimes';
@@ -12,6 +13,13 @@ interface CardUserProps extends InputsProps {
 }
 
 const CardUser = ({ removeUser, ...user }: CardUserProps) => {
+  const histoty = useHistory();
+
+  const redirectToEditUser = (cpf: string) => {
+    histoty.push(`/edit-user/${cpf}`);
+    return;
+  };
+
   return (
     <S.Wrapper>
       <S.ContentLeft>
@@ -30,7 +38,7 @@ const CardUser = ({ removeUser, ...user }: CardUserProps) => {
       </S.ContentLeft>
 
       <S.ContentRight>
-        <S.UserEditContainer>
+        <S.UserEditContainer onClick={() => redirectToEditUser(user.cpf)}>
           <UserEditIcon />
         </S.UserEditContainer>
 
