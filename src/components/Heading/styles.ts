@@ -2,8 +2,12 @@ import styled, { css } from 'styled-components';
 
 import media from 'styled-media-query';
 
-export const Wrapper = styled.div`
-  ${() => css`
+interface SearchInputContainerProps {
+  isSerchIcon?: boolean;
+}
+
+export const Wrapper = styled.div<SearchInputContainerProps>`
+  ${({ isSerchIcon }) => css`
     width: 100%;
     padding: 16px 32px;
     position: relative;
@@ -12,8 +16,31 @@ export const Wrapper = styled.div`
     flex-direction: column;
 
     ${media.lessThan('medium')`
-      padding: 16px 16px;
+      padding: ${isSerchIcon ? '16px 16px 8px 16px' : '16px'};
     `}
+  `}
+`;
+
+export const SearchIconContainer = styled.div`
+  ${() => css`
+    svg {
+      width: 40px;
+      cursor: pointer;
+      color: #313131;
+
+      ${media.lessThan('medium')`
+        width: 35px;
+      `}
+
+      ${media.greaterThan('medium')`
+        display: none;
+      `}
+
+      &:hover {
+        opacity: 0.7;
+        transition: 0.5s;
+      }
+    }
   `}
 `;
 
@@ -25,7 +52,6 @@ export const IconsContainer = styled.div`
     align-items: center;
 
     ${media.lessThan('medium')`
-      justify-content: flex-end;
     `}
   `}
 `;
@@ -63,8 +89,8 @@ export const RedirectUsersContainer = styled.div`
   }
 `;
 
-export const SearchInputContainer = styled.div`
-  ${({ theme }) => css`
+export const SearchInputContainer = styled.div<SearchInputContainerProps>`
+  ${({ theme, isSerchIcon }) => css`
     width: 35%;
     height: 43px;
     left: 50%;
@@ -77,6 +103,8 @@ export const SearchInputContainer = styled.div`
       position: relative;
       width: 100%;
       margin-top: 16px;
+
+      display: ${isSerchIcon ? 'block' : 'none'};
     `}
 
     > input {
@@ -86,6 +114,10 @@ export const SearchInputContainer = styled.div`
       border: 1px solid ${theme.colors.secondary};
       border-radius: 4px 0 0 4px;
       background-color: ${theme.colors.background};
+
+      ${media.lessThan('medium')`
+        border-radius: 4px;
+      `}
     }
 
     > div {
@@ -97,6 +129,10 @@ export const SearchInputContainer = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
+      ${media.lessThan('medium')`
+        display: none;
+      `}
 
       &:hover {
         opacity: 0.9;

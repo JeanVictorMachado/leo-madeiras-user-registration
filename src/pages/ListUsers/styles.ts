@@ -32,7 +32,7 @@ export const TitleContainer = styled.div`
   justify-content: center;
 
   ${media.lessThan('medium')`
-    padding: 16px;
+    padding: 20px;
   `}
 `;
 
