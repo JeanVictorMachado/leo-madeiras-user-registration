@@ -39,3 +39,24 @@ export const TitleContainer = styled.div`
 export const CardContainer = styled.div`
   ${() => css``}
 `;
+
+export const IconContainer = styled.div`
+  ${() => css`
+    width: 100%;
+    display: flex;
+    margin-top: 32px;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+
+    > span {
+      font-weight: 600;
+    }
+
+    > svg {
+      width: 20px;
+      font-weight: 600;
+      margin-right: 5px;
+    }
+  `}
+`;
