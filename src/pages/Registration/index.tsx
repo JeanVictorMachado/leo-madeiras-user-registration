@@ -106,7 +106,7 @@ const Registration = () => {
       setPhone(user?.phone);
       setEmail(user?.email);
     }
-  }, []);
+  }, [reset, routeParam?.id]);
 
   return (
     <S.Wrapper>
