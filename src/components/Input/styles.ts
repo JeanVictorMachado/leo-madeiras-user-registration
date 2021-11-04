@@ -32,6 +32,13 @@ export const Wrapper = styled.label<WrapperProps>`
       color: red;
       margin-top: 5px;
       font-size: 14px;
+      display: flex;
+      align-items: center;
+
+      > svg {
+        width: 13px;
+        margin-right: 5px;
+      }
     }
   `}
 `;

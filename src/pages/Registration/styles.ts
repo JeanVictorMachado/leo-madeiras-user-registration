@@ -23,11 +23,15 @@ export const Content = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  padding: 16px;
+  padding: 32px;
   border-bottom: 1px solid lightgray;
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
+
+  ${media.lessThan('medium')`
+    padding: 16px;
+  `}
 `;
 
 export const FormContainer = styled.div`

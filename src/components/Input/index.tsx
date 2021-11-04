@@ -3,6 +3,8 @@ import { Path, UseFormRegister } from 'react-hook-form';
 import { InputsProps } from '../../pages/Registration';
 import InputMask from 'react-input-mask';
 
+import { ErrorCircle as ErrorCircleIcon } from '@styled-icons/boxicons-regular/ErrorCircle';
+
 import * as S from './styles';
 
 type InputProps = {
@@ -37,7 +39,13 @@ const Input = ({
       ) : (
         <input {...register(fieldName)} {...props} />
       )}
-      <p>{error}</p>
+      <div>
+        {error && (
+          <p>
+            <ErrorCircleIcon /> {error}
+          </p>
+        )}
+      </div>
     </S.Wrapper>
   );
 };

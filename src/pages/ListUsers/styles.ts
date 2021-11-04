@@ -18,9 +18,9 @@ export const Content = styled.div`
     margin: auto;
 
     ${media.lessThan('medium')`
-    width: 100%;
-    padding: 0 16px;
-  `}
+      width: 100%;
+      padding: 0 16px;
+    `}
   `}
 `;
 
@@ -30,6 +30,10 @@ export const TitleContainer = styled.div`
   margin-bottom: 16px;
   display: flex;
   justify-content: center;
+
+  ${media.lessThan('medium')`
+    padding: 16px;
+  `}
 `;
 
 export const CardContainer = styled.div`
