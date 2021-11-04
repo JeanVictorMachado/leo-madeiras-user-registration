@@ -117,6 +117,7 @@ export const SearchInputContainer = styled.div<SearchInputContainerProps>`
 
       ${media.lessThan('medium')`
         border-radius: 4px;
+        position: relative;
       `}
     }
 
@@ -129,9 +130,13 @@ export const SearchInputContainer = styled.div<SearchInputContainerProps>`
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
 
       ${media.lessThan('medium')`
-        display: none;
+        position: absolute;
+        bottom: 8px;
+        right: 0;
+        width: 35px;
       `}
 
       &:hover {
@@ -142,7 +147,10 @@ export const SearchInputContainer = styled.div<SearchInputContainerProps>`
       > svg {
         width: 25px;
         color: ${theme.colors.background};
-        cursor: pointer;
+
+        ${media.lessThan('medium')`
+          width: 20px;
+        `}
       }
   `}
 `;

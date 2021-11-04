@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { InputsProps } from '../../pages/Registration';
+import InputMask from 'react-input-mask';
+import { useHistory } from 'react-router-dom';
 
 import { Search as SearchIcon } from '@styled-icons/boxicons-regular/Search';
 import { PeopleList as PeopleListIcon } from '@styled-icons/fluentui-system-filled/PeopleList';
@@ -8,15 +11,27 @@ import { PeopleSearch as PeopleSearchIcon } from '@styled-icons/fluentui-system-
 
 import * as S from './styles';
 
-interface HeadingProps {
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
-}
-
-const Heading = ({ onChange }: HeadingProps) => {
+const Heading = () => {
   const [isSerchIcon, setIsSerchIcon] = useState(false);
+  const [serchByCpf, setSearchByCpf] = useState('');
+  const history = useHistory();
 
   const pathname = useLocation().pathname;
-  const isCreateUser = pathname === '/list-users';
+  const isCreateUser = pathname.includes('/list-users');
+
+  const filterUserByCpf = (serchByCpf: string) => {
+    const usersInfos = localStorage.getItem('@userInfos:');
+    const users = JSON.parse(String(usersInfos)) as InputsProps[];
+    const cpfExist = users?.filter(
+      (user) => user.cpf === serchByCpf.replace(/[^\d]+/g, '')
+    );
+
+    setSearchByCpf('');
+
+    if (cpfExist.length > 0) {
+      history.push(`/list-users/${serchByCpf.replace(/[^\d]+/g, '')}`);
+    }
+  };
 
   return (
     <S.Wrapper isSerchIcon={isSerchIcon}>
@@ -29,7 +44,7 @@ const Heading = ({ onChange }: HeadingProps) => {
 
         <S.RedirectUsersContainer>
           {!isCreateUser ? (
-            <Link to="/list-users">
+            <Link to="/list-users/all-users">
               <PeopleListIcon />
             </Link>
           ) : (
@@ -41,8 +56,15 @@ const Heading = ({ onChange }: HeadingProps) => {
       </S.IconsContainer>
 
       <S.SearchInputContainer isSerchIcon={isSerchIcon}>
-        <input onChange={onChange} type="text" placeholder="Digite um CPF" />
-        <div>
+        <InputMask
+          name="filterUser"
+          mask={'999.999.999.99'}
+          onChange={({ target }) => setSearchByCpf(target.value)}
+          type="text"
+          value={serchByCpf}
+          placeholder="Digite um CPF"
+        />
+        <div onClick={() => filterUserByCpf(serchByCpf)}>
           <SearchIcon />
         </div>
       </S.SearchInputContainer>

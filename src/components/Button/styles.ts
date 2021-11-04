@@ -8,7 +8,7 @@ type WrapperProps = {
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme }) => css`
     width: 100%;
-    height: 35px;
+    height: 36px;
     border: none;
     border-radius: 3px;
     background-color: ${theme.colors.secondary};

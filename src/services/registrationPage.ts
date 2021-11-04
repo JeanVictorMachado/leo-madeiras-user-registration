@@ -42,7 +42,7 @@ export const saveUsers = ({
 
     setTimeout(() => {
       setSudmitFormSuccess(false);
-      history.push('/list-users');
+      history.push('/list-users/all-users');
     }, 1500);
 
     return;
@@ -58,7 +58,7 @@ export const saveUsers = ({
 
     setTimeout(() => {
       setSudmitFormSuccess(false);
-      history.push('/list-users');
+      history.push('/list-users/all-users');
     }, 1500);
 
     return;
@@ -85,7 +85,7 @@ export const editUser = ({
 
   setTimeout(() => {
     setEditUserSuccess(false);
-    history.push('/list-users');
+    history.push('/list-users/all-users');
   }, 1500);
 
   return;

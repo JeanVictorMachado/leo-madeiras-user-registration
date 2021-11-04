@@ -37,7 +37,7 @@ export const Wrapper = styled.label<WrapperProps>`
 
       > svg {
         width: 13px;
-        margin-right: 5px;
+        margin-right: 3px;
       }
     }
   `}
