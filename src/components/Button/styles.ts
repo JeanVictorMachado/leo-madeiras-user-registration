@@ -6,9 +6,9 @@ type WrapperProps = {
 };
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme }) => css`
-    width: 100%;
-    height: 36px;
+  ${({ theme, width, height }) => css`
+    width: ${width ? width : '100%'};
+    height: ${height ? height : '36px'};
     border: none;
     border-radius: 3px;
     background-color: ${theme.colors.secondary};

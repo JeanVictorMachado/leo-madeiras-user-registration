@@ -6,9 +6,12 @@
     "@hookform/resolvers": "^2.8.3",
     "@styled-icons/bootstrap": "^10.34.0",
     "@styled-icons/boxicons-regular": "^10.38.0",
+    "@styled-icons/boxicons-solid": "^10.38.0",
     "@styled-icons/fa-solid": "^10.34.0",
     "@styled-icons/fluentui-system-filled": "^10.35.0",
+    "@styled-icons/material-outlined": "^10.34.0",
     "@styled-icons/remix-line": "^10.18.0",
+    "@styled-icons/zondicons": "^10.18.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^12.1.10",
@@ -32,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "test:watch": "yarn test --watch"
   },
   "eslintConfig": {
@@ -60,20 +63,18 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-typescript": "^7.16.0",
     "@types/react-input-mask": "^3.0.1",
     "@types/react-router-dom": "^5.3.2",
     "@types/styled-components": "^5.1.15",
     "@types/yup": "^0.29.13",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
-    "babel-plugin-styled-components": "^1.13.3",
     "eslint": "^8.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "jest": "^27.3.1",
+    "jest-styled-components": "^7.0.5",
     "prettier": "2.4.1"
   }
 }

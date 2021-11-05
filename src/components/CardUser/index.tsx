@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { UserEdit as UserEditIcon } from '@styled-icons/fa-solid/UserEdit';
-import { UserTimes as UserTimesIcon } from '@styled-icons/fa-solid/UserTimes';
+import { EditAlt as EditAltIcon } from '@styled-icons/boxicons-solid/EditAlt';
+import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
 
 import { InputsProps } from '../../pages/Registration';
 
@@ -15,13 +15,13 @@ interface CardUserProps extends InputsProps {
 const CardUser = ({ removeUser, ...user }: CardUserProps) => {
   const histoty = useHistory();
 
-  const redirectToEditUser = (cpf: string) => {
-    histoty.push(`/edit-user/${cpf}`);
+  const redirectToEditUser = () => {
+    histoty.push(`/edit-user/${user.cpf}`);
     return;
   };
 
   return (
-    <S.Wrapper>
+    <S.Wrapper data-testid="wrapper-card">
       <S.ContentLeft>
         <span>
           <strong>Nome:</strong> {user.name}
@@ -38,12 +38,12 @@ const CardUser = ({ removeUser, ...user }: CardUserProps) => {
       </S.ContentLeft>
 
       <S.ContentRight>
-        <S.UserEditContainer onClick={() => redirectToEditUser(user.cpf)}>
-          <UserEditIcon />
+        <S.UserEditContainer onClick={redirectToEditUser}>
+          <EditAltIcon />
         </S.UserEditContainer>
 
         <S.UserDeleteContainer onClick={() => removeUser(user.cpf)}>
-          <UserTimesIcon />
+          <CloseIcon />
         </S.UserDeleteContainer>
       </S.ContentRight>
     </S.Wrapper>

@@ -30,7 +30,10 @@ const Heading = () => {
 
     if (cpfExist.length > 0) {
       history.push(`/list-users/${serchByCpf.replace(/[^\d]+/g, '')}`);
+      return;
     }
+
+    alert('Cliente não encontrado!');
   };
 
   return (
