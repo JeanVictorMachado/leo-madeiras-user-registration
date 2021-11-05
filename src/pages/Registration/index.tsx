@@ -33,7 +33,6 @@ const schema = yup.object({
 });
 
 const Registration = () => {
-  //const [emailExist, setEmailExist] = useState<string | null>('');
   const [cpfExist, setCpfExist] = useState<string | null>('');
   const [sudmitFormSuccess, setSudmitFormSuccess] = useState(false);
   const [editUserSuccess, setEditUserSuccess] = useState(false);
