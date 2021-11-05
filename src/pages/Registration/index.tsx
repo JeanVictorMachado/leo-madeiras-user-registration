@@ -161,7 +161,9 @@ const Registration = () => {
               error={email === oldEmail && errors.email?.message}
               mask={''}
             />
-            <Button type="submit">Cadastrar</Button>
+            <Button type="submit">
+              {routeParam?.id ? 'Salvar' : 'Cadastrar'}
+            </Button>
             {sudmitFormSuccess && <p>Cadastro realizado com sucesso!</p>}
             {editUserSuccess && <p>Usuário atualizado com sucesso!</p>}
           </form>
