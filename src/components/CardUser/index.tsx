@@ -15,6 +15,21 @@ interface CardUserProps extends InputsProps {
 const CardUser = ({ removeUser, ...user }: CardUserProps) => {
   const histoty = useHistory();
 
+  const cpf = user.cpf.replace(/[^\d]/g, '');
+  const cpfFormatted = cpf.replace(
+    /(\d{3})(\d{3})(\d{3})(\d{2})/,
+    '$1.$2.$3-$4'
+  );
+
+  const formatNumber: RegExpMatchArray | null =
+    user.phone.length === 11
+      ? user.phone.match(/(\d{2})(\d{5})(\d{4})/)
+      : user.phone.match(/(\d{2})(\d{4})(\d{4})/);
+
+  const finalNumber = `(${formatNumber && formatNumber[1]}) ${
+    formatNumber && formatNumber[2]
+  }-${formatNumber && formatNumber[3]}`;
+
   const redirectToEditUser = () => {
     histoty.push(`/edit-user/${user.cpf}`);
     return;
@@ -30,10 +45,10 @@ const CardUser = ({ removeUser, ...user }: CardUserProps) => {
           <strong>Email:</strong> {user.email}
         </span>
         <span>
-          <strong>CPF:</strong> {user.cpf}
+          <strong>CPF:</strong> {cpfFormatted}
         </span>
         <span>
-          <strong>Tel:</strong> {user.phone}
+          <strong>Tel:</strong> {finalNumber}
         </span>
       </S.ContentLeft>
 
